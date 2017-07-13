@@ -52,16 +52,32 @@
         background-color: cyan;
       }
     </style>
+    <script>
+      (function() {
+        document.addEventListener('DOMContentLoaded', function() {
+          function prepCameraFeed(feedId) {
+            var feed = document.getElementById(feedId);
+            
+            var feedUrl = "http://" + location.host + feed.alt
+            feed.src = feedUrl;
+            feed.alt = feedUrl;
+          }
+
+          prepCameraFeed("camera-feed-1");
+          prepCameraFeed("camera-feed-2");
+        });
+      })();
+    </script>
   </head>
   <body>
     <div class="telemetry-holder">
       <div class="camera" id="camera-1" frameborder=0>
         <span>Forward Camera</span>
-        <img src="http://192.168.1.74:8080/?action=stream" alt="http://192.168.1.74:8080/?action=stream" width="100%" height="auto">
+        <img id="camera-feed-1" alt=":8080/?action=stream" width="100%" height="auto">
       </div>
       <div class="camera" id="camera-2" frameborder=0>
         <span>Rear Camera</span>
-        <img src="http://192.168.1.74:8090/?action=stream" alt="http://192.168.1.74:8090/?action=stream" width="100%" height="auto">
+        <img id="camera-feed-2" alt=":8090/?action=stream" width="100%" height="auto">
       </div>
       <div class="camera" id="thermal-1"></div>
     </div>
