@@ -3,89 +3,33 @@
   <head>
     <title>Lunar Rover - Telemetry View</title>
     <meta charset="utf-8" />
-    <style>
-      body {
-        margin: 0;
-      }
-
-      .telemetry-holder {
-        width: 100vw;
-        height: 50vh;
-        font-size: 0;
-      }
-
-      .camera {
-        width: 33.3333vw;
-        height: 50vh;
-        display: inline-block;
-        font-size: 16px;
-      }
-      .camera > span {
-        font-size: 2em;
-        font-family: "Courier New";
-      }
-      #camera-1 {
-        background-color: red;
-      }
-      #camera-2 {
-        background-color: lightblue;
-      }
-      #thermal-1 {
-        background-color: purple;
-      }
-
-      .data {
-        width: 25vw;
-        height: 50vh;
-        display: inline-block;
-      }
-      #drive {
-        background-color: green;
-      }
-      #arm {
-        background-color: orange;
-      }
-      #orientation {
-        background-color: brown;
-      }
-      #temperatures {
-        background-color: cyan;
-      }
-    </style>
-    <script>
-      (function() {
-        document.addEventListener('DOMContentLoaded', function() {
-          function prepCameraFeed(feedId) {
-            var feed = document.getElementById(feedId);
-            
-            var feedUrl = "http://" + location.host + feed.alt
-            feed.src = feedUrl;
-            feed.alt = feedUrl;
-          }
-
-          prepCameraFeed("camera-feed-1");
-          prepCameraFeed("camera-feed-2");
-        });
-      })();
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <script src="data.js"></script>
+    <link href="data.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div class="telemetry-holder">
-      <div class="camera" id="camera-1" frameborder=0>
+      <div class="camera" id="camera-1">
         <span>Forward Camera</span>
         <img id="camera-feed-1" alt=":8080/?action=stream" width="100%" height="auto">
       </div>
-      <div class="camera" id="camera-2" frameborder=0>
+      <div class="camera" id="camera-2">
         <span>Rear Camera</span>
         <img id="camera-feed-2" alt=":8090/?action=stream" width="100%" height="auto">
       </div>
-      <div class="camera" id="thermal-1"></div>
+      <div class="camera" id="thermal-1">
+        <span>Thermal Sensor</span>
+        <img id="thermal-feed" alt=":8100/?action=stream" width="100%" height="auto">
+      </div>
     </div>
     <div class="telemetry-holder">
       <div class="data" id="drive"></div>
       <div class="data" id="arm"></div>
       <div class="data" id="orientation"></div>
-      <div class="data" id="temperatures"></div>
+      <div class="data" id="temperatures">
+        <canvas id="temp-graph"></canvas>
+      </div>
     <div>
   </body>
 </html>

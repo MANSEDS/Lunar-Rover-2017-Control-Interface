@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+}
+
+.telemetry-holder {
+    width: 100vw;
+    height: 50vh;
+    font-size: 0;
+}
+
+.camera {
+    width: 33.3333vw;
+    height: 50vh;
+    display: inline-block;
+    font-size: 16px;
+    position: absolute;
+}
+.camera > span {
+    font-size: 2em;
+    font-family: "Courier New";
+}
+#camera-1 {
+    background-color: #CCFFFF;
+}
+#camera-2 {
+    background-color: #CCFFDD;
+    margin-left: 33.3333vw;
+}
+#thermal-1 {
+    background-color: #FFFFEE;
+    margin-left: 66.6666vw;
+}
+
+.data {
+    width: 25vw;
+    height: 50vh;
+    display: inline-block;
+    position: absolute;
+}
+#drive {
+    background-color: #A79AFF;
+}
+#arm {
+    background-color: #85E3FF;
+    margin-left: 25vw;
+}
+#orientation {
+    background-color: #E7FFAC;
+    margin-left: 50vw;
+}
+#temperatures {
+    background-color: #FFABAB;
+    margin-left: 75vw;
+}
+
+#temp-graph {
+    margin-top: 10vh;
+}
